@@ -1,0 +1,23 @@
+clear
+clc
+close all
+
+function xdot=f(x,t)
+
+  k=1;
+  m=1;
+
+  xdot=zeros(2,1);
+  xdot(1)=x(2);
+  xdot(2)= -(k/m)*x(1);
+
+end
+
+x0=[0;0.1];
+ t=linspace(0,20);
+
+x=lsode("f",x0,t);
+
+plot(t,x(:,1),"-r",t,x(:,2),"-b")
+legend("x(t)","v(t)","fontsize",14)
+xlabel("t(seconds)","fontsize",14)
